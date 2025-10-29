@@ -1,5 +1,8 @@
 import pygame
+from grid import Grid
+import sys
 
+#inicializa o pygame
 pygame.init()
 preto= (0, 0, 0)
 
@@ -9,6 +12,9 @@ tela= pygame.display.set_mode((300, 600))
 pygame.display.set_caption('Trix!')
 # relogio para controlar a velocidade do jogo
 relogio = pygame.time.Clock()
+
+game_grid= Grid()
+game_grid.print_grid()
 
 #loop principal do jogo
 while True:
