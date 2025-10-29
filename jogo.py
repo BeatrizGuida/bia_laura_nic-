@@ -1,6 +1,7 @@
 import pygame
 
 pygame.init()
+preto= (0, 0, 0)
 
 #tamanho da tela
 tela= pygame.display.set_mode((300, 600))
@@ -16,6 +17,8 @@ while True:
         if eventos.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
     #pega todas as alterações feitas e desenha uma imagem nova
+    tela.fill(preto)
     pygame.display.update()
     relogio.tick(60)
