@@ -1,3 +1,5 @@
+import pygame
+
 class Grid:
     def __init__(self):
         self.num_linhas= 20
@@ -29,8 +31,12 @@ class Grid:
         return [cinza_escuro, verde_neon, vermelho_neon, laranja_neon, amarelo_neon, roxo_neon, ciano_neon, azul_neon]
     
     #função para desenhar o grid 
-    def draw(self):
+    def draw(self, tela):
         #itera cada celula no grid
         for linha in range(self.num_linhas):
             for coluna in range(self.num_colunas):
                 valor_celula= self.grid[linha][coluna] 
+                #soma um pixel para que a linha seja visivel no grid e subtrai (para que fique 29 pixels)
+                celula_rect= pygame.Rect(coluna*self.tamanho_celula +1, linha*self.tamanho_celula +1,
+                self.tamanho_celula -1, self.tamanho_celula -1)
+                pygame.draw.rect(tela, self.colors[valor_celula], celula_rect)

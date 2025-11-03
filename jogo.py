@@ -26,5 +26,7 @@ while True:
 
     #pega todas as alterações feitas e desenha uma imagem nova
     tela.fill(preto)
+    game_grid.draw(tela)
+
     pygame.display.update()
     relogio.tick(60)
