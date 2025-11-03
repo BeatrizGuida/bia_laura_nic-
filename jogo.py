@@ -1,6 +1,6 @@
-import pygame
+import pygame, sys
 from grid import Grid
-import sys
+from blocks import *
 
 #inicializa o pygame
 pygame.init()
@@ -15,13 +15,7 @@ relogio = pygame.time.Clock()
 
 game_grid= Grid()
 
-#definir alguns valores na grid para teste
-game_grid.grid[0][0]= 1
-game_grid.grid[3][5]= 4
-game_grid.grid[17][8]= 7
-
-
-game_grid.print_grid()
+block= LBlock() 
 
 #loop principal do jogo
 while True:
@@ -34,6 +28,7 @@ while True:
     #pega todas as alterações feitas e desenha uma imagem nova
     tela.fill(preto)
     game_grid.draw(tela)
+    block.draw(tela)
 
     pygame.display.update()
     relogio.tick(60)

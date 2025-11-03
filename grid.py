@@ -1,5 +1,7 @@
 import pygame
 
+from colors import Colors
+
 class Grid:
     def __init__(self):
         self.num_linhas= 20
@@ -7,7 +9,7 @@ class Grid:
         self.tamanho_celula= 30
         #inicia no zero a grid
         self.grid= [[0 for j in range(self.num_colunas)] for i in range(self.num_linhas)]
-        self.colors= self.cor_dos_blocos()
+        self.colors= Colors.cores_celulas()
 
 
     def print_grid(self):
@@ -16,20 +18,6 @@ class Grid:
                 print(self.grid[linha][coluna], end=" ")
             #imprime valor linha por linha
             print()
-    
-
-    def cor_dos_blocos(self):
-        #sete blocos de cores diferentes para as peças
-        cinza_escuro = (26, 31, 40)       
-        verde_neon   = (77, 255, 0)     
-        vermelho_neon = (255, 30, 30)     
-        laranja_neon = (255, 140, 0)      
-        amarelo_neon = (255, 255, 0)       
-        roxo_neon    = (191, 0, 255)       
-        ciano_neon   = (0, 255, 255)      
-        azul_neon    = (0, 100, 255)  
-             
-        return [cinza_escuro, verde_neon, vermelho_neon, laranja_neon, amarelo_neon, roxo_neon, ciano_neon, azul_neon]
     
 
     #função para desenhar o grid 
