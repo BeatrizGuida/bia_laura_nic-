@@ -30,6 +30,7 @@ class Grid:
         azul_neon    = (0, 100, 255)       
         return [cinza_escuro, verde_neon, vermelho_neon, laranja_neon, amarelo_neon, roxo_neon, ciano_neon, azul_neon]
     
+
     #função para desenhar o grid 
     def draw(self, tela):
         #itera cada celula no grid
@@ -40,3 +41,5 @@ class Grid:
                 celula_rect= pygame.Rect(coluna*self.tamanho_celula +1, linha*self.tamanho_celula +1,
                 self.tamanho_celula -1, self.tamanho_celula -1)
                 pygame.draw.rect(tela, self.colors[valor_celula], celula_rect)
+   
+   
