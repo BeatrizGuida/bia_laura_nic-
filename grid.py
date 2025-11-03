@@ -27,7 +27,8 @@ class Grid:
         amarelo_neon = (255, 255, 0)       
         roxo_neon    = (191, 0, 255)       
         ciano_neon   = (0, 255, 255)      
-        azul_neon    = (0, 100, 255)       
+        azul_neon    = (0, 100, 255)  
+             
         return [cinza_escuro, verde_neon, vermelho_neon, laranja_neon, amarelo_neon, roxo_neon, ciano_neon, azul_neon]
     
 
@@ -41,5 +42,4 @@ class Grid:
                 celula_rect= pygame.Rect(coluna*self.tamanho_celula +1, linha*self.tamanho_celula +1,
                 self.tamanho_celula -1, self.tamanho_celula -1)
                 pygame.draw.rect(tela, self.colors[valor_celula], celula_rect)
-   
    
