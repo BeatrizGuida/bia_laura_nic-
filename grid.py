@@ -27,3 +27,10 @@ class Grid:
         ciano_neon   = (0, 255, 255)      
         azul_neon    = (0, 100, 255)       
         return [cinza_escuro, verde_neon, vermelho_neon, laranja_neon, amarelo_neon, roxo_neon, ciano_neon, azul_neon]
+    
+    #função para desenhar o grid 
+    def draw(self):
+        #itera cada celula no grid
+        for linha in range(self.num_linhas):
+            for coluna in range(self.num_colunas):
+                valor_celula= self.grid[linha][coluna] 
