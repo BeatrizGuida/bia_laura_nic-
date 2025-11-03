@@ -2,6 +2,7 @@ import pygame, sys
 from grid import Grid
 from blocks import *
 
+
 #inicializa o pygame
 pygame.init()
 preto= (0, 0, 0)
@@ -15,7 +16,8 @@ relogio = pygame.time.Clock()
 
 game_grid= Grid()
 
-block= LBlock() 
+block= TBlock() 
+block.move(4,3)
 
 #loop principal do jogo
 while True:
