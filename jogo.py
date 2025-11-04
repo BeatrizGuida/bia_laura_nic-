@@ -16,7 +16,7 @@ relogio = pygame.time.Clock()
 game_grid= Grid()
 
 block= TBlock() 
-block.movimento(5,3)
+
 
 #loop principal do jogo
 while True:
