@@ -22,6 +22,14 @@ while True:
         if eventos.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        if eventos.type == pygame.KEYDOWN:
+            if eventos.key == pygame.K_LEFT:
+                game.move_esquerda()
+            if eventos.key == pygame.K_RIGHT:
+                game.move_direita()
+            if eventos.key == pygame.K_DOWN:
+                game.move_baixo()
+
 
     #pega todas as alterações feitas e desenha uma imagem nova
     tela.fill(preto)

@@ -17,6 +17,15 @@ class Game:
         self.blocks.remove(block)
         return block
     
+    def move_esquerda(self):
+        self.current_block.move(0, -1)
+
+    def move_direita(self):
+        self.current_block.move(0, 1)
+
+    def move_baixo(self):
+        self.current_block.move(1, 0)
+    
     def draw(self, tela):
         self.grid.draw(tela)
         self.current_block.draw(tela)
