@@ -16,7 +16,7 @@ relogio = pygame.time.Clock()
 
 game_grid= Grid()
 
-block= OBlock() 
+block= LBlock() 
 
 
 #loop principal do jogo
