@@ -13,6 +13,7 @@ pygame.display.set_caption('Trix!')
 # relogio para controlar a velocidade do jogo
 relogio = pygame.time.Clock()
 
+
 game_grid= Grid()
 
 block= TBlock() 
