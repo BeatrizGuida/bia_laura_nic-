@@ -30,7 +30,7 @@ class Block:
 
 
     def draw(self, tela):
-        tiles= self.cells[self.rotation_state]
+        tiles= self.movimento_celulas()
         for tile in tiles:
             tile_rect= pygame.Rect(tile.coluna * self.cell_size +1, tile.linha * self.cell_size +1, 
             self.cell_size -1, self.cell_size -1)
