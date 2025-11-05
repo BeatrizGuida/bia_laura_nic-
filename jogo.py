@@ -1,6 +1,6 @@
 import pygame, sys
-from grid import Grid
-from blocks import *
+from game import Game
+
 
 #inicializa o pygame
 pygame.init()
@@ -13,11 +13,7 @@ pygame.display.set_caption('Trix!')
 # relogio para controlar a velocidade do jogo
 relogio = pygame.time.Clock()
 
-
-game_grid= Grid()
-
-block= LBlock() 
-
+game= Game()
 
 #loop principal do jogo
 while True:
@@ -29,8 +25,7 @@ while True:
 
     #pega todas as alterações feitas e desenha uma imagem nova
     tela.fill(preto)
-    game_grid.draw(tela)
-    block.draw(tela)
+    game.draw(tela)
 
     pygame.display.update()
     relogio.tick(60)
