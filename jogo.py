@@ -1,7 +1,6 @@
 import pygame, sys
 from game import Game
 
-
 #inicializa o pygame
 pygame.init()
 preto= (0, 0, 0)
