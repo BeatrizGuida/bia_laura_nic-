@@ -35,6 +35,8 @@ class Game:
 
     def rotaciona(self):
         self.current_block.rotaciona()
+        if self.bloqueia_movimento() == False:
+            self.current_block.cancela_rotacao()
 
 
     def bloqueia_movimento (self):

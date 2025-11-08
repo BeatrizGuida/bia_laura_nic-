@@ -32,6 +32,11 @@ class Block:
         self.rotation_state += 1
         if self.rotation_state == len(self.cells):
             self.rotation_state = 0
+
+    def canccela_rotacao (self):
+        self.rotation_state -= 1
+        if self.rotation_state == 0:
+            self.rotation_state = len(self.cells) -1
     
 
     def draw(self, tela):
