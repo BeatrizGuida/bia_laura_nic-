@@ -18,13 +18,13 @@ class Game:
         return block
     
     def move_esquerda(self):
-        self.current_block.move(0, -1)
+        self.current_block.movimento(0, -1)
 
     def move_direita(self):
-        self.current_block.move(0, 1)
+        self.current_block.movimento(0, 1)
 
     def move_baixo(self):
-        self.current_block.move(1, 0)
+        self.current_block.movimento(1, 0)
     
     def bloqueia_movimento (self):
         tiles= self.current_block.get_cell
