@@ -15,10 +15,14 @@ class Grid:
     def print_grid(self):
         for linha in range (self.num_linhas):
             for coluna in range (self.num_colunas):
-                print(self.grid[linha][coluna], end=" ")
+                print(self.grid[linha][coluna], end= " ")
             #imprime valor linha por linha
             print()
     
+    def dentro (self, linha, coluna):
+        if linha >= 0 and linha < self.num_linhas and coluna >= 0 and coluna < self.num_colunas:
+            return True
+        return False
 
     #função para desenhar o grid 
     def draw(self, tela):
