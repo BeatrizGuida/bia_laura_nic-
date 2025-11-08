@@ -26,6 +26,9 @@ class Game:
     def move_baixo(self):
         self.current_block.move(1, 0)
     
+    def bloqueia_movimento (self):
+        tiles= self.current_block.get_cell
+    
     def draw(self, tela):
         self.grid.draw(tela)
         self.current_block.draw(tela)
