@@ -34,7 +34,7 @@ class Game:
             self.current_block.movimento(-1, 0)
 
     def bloqueia_movimento (self):
-        tiles= self.current_block.get_cell_positions()
+        tiles= self.current_block.movimento_celulas()
         for tile in tiles:
             if self.grid.dentro(tile.linha, tile.coluna) == False:
                 return False
