@@ -1,5 +1,6 @@
 from grid import Grid
 from blocks import *
+from block import *
 import random
 
 class Game:
