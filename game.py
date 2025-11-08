@@ -33,6 +33,10 @@ class Game:
         if self.bloqueia_movimento() == False:
             self.current_block.movimento(-1, 0)
 
+    def rotaciona(self):
+        self.current_block.rotaciona()
+
+
     def bloqueia_movimento (self):
         tiles= self.current_block.movimento_celulas()
         for tile in tiles:

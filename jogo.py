@@ -29,6 +29,9 @@ while True:
             if eventos.key == pygame.K_DOWN:
                 game.move_baixo()
 
+            if eventos.key == pygame.K_UP:
+                game.rotaciona()
+
 
     #pega todas as alterações feitas e desenha uma imagem nova
     tela.fill(preto)

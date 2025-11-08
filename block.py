@@ -28,6 +28,11 @@ class Block:
         return moved_posi
     
 
+    def rotaciona (self):
+        self.rotation_state += 1
+        if self.rotation_state == len(self.cells):
+            self.rotation_state = 0
+    
 
     def draw(self, tela):
         tiles= self.movimento_celulas()
