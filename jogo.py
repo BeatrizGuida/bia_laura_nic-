@@ -28,7 +28,6 @@ while True:
                 game.move_direita()
             if eventos.key == pygame.K_DOWN:
                 game.move_baixo()
-
             if eventos.key == pygame.K_UP:
                 game.rotaciona()
 

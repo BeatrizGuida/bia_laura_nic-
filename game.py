@@ -1,6 +1,5 @@
 from grid import Grid
 from blocks import *
-from block import *
 import random
 
 class Game:
@@ -37,7 +36,7 @@ class Game:
     def rotaciona(self):
         self.current_block.rotaciona()
         if self.bloqueia_movimento() == False:
-            self.current_block.cancela_rotacao()
+            self.current_block.desfaz_rotacao()
 
 
     def bloqueia_movimento (self):
