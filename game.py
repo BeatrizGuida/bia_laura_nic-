@@ -19,15 +19,26 @@ class Game:
     
     def move_esquerda(self):
         self.current_block.movimento(0, -1)
+        if self.bloqueia_movimento() == False:
+            self.current_block.movimento(0, 1)
+
 
     def move_direita(self):
         self.current_block.movimento(0, 1)
+        if self.bloqueia_movimento() == False:
+            self.current_block.movimento(0, -1)
 
     def move_baixo(self):
         self.current_block.movimento(1, 0)
-    
+        if self.bloqueia_movimento() == False:
+            self.current_block.movimento(-1, 0)
+
     def bloqueia_movimento (self):
-        tiles= self.current_block.get_cell
+        tiles= self.current_block.get_cell_positions()
+        for tile in tiles:
+            if self.grid.dentro(tile.linha, tile.coluna) == False:
+                return False
+        return True
     
     def draw(self, tela):
         self.grid.draw(tela)
