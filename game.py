@@ -73,7 +73,9 @@ class Game:
     def verifica_bloco(self):
         pecas= self.current_block.movimento_celulas()
         for peca in pecas:
-            if self.grid.vazia(peca.linha, peca.coluna) == False:
+            #if self.grid.vazia(peca.linha, peca.coluna) == False:
+            # se fora do grid ou célula ocupada -> bloco inválido
+            if not self.grid.vazia(peca.linha, peca.coluna):
                 return False
         return True
 
