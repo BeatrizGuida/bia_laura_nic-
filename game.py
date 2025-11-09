@@ -19,13 +19,13 @@ class Game:
     
     def move_esquerda(self):
         self.current_block.movimento(0, -1)
-        if self.bloqueia_movimento() == False:
+        if self.bloqueia_movimento() == False or self.verifica_bloco() == False:
             self.current_block.movimento(0, 1)
 
 
     def move_direita(self):
         self.current_block.movimento(0, 1)
-        if self.bloqueia_movimento() == False:
+        if self.bloqueia_movimento() == False or self.verifica_bloco() == False:
             self.current_block.movimento(0, -1)
 
     def move_baixo(self):
@@ -52,7 +52,7 @@ class Game:
 
     def rotaciona(self):
         self.current_block.rotaciona()
-        if self.bloqueia_movimento() == False:
+        if self.bloqueia_movimento() == False or self.verifica_bloco() == False:
             self.current_block.desfaz_rotacao()
 
 
