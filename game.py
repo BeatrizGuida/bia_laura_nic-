@@ -30,7 +30,7 @@ class Game:
 
     def move_baixo(self):
         self.current_block.movimento(1, 0)
-        if self.bloqueia_movimento() == False:
+        if self.bloqueia_movimento() == False or self.verifica_bloco() == False:
             self.current_block.movimento(-1, 0)
             self.lock_block()
 
@@ -42,6 +42,13 @@ class Game:
         self.current_block= self.next_block
         #pega um novo bloco aleatório
         self.next_block= self.get_random_block()
+
+    def verifica_bloco(self):
+        pecas= self.current_block.movimento_celulas()
+        for peca in pecas:
+            if self.grid.vazia(peca.linha, peca.coluna) == False:
+                return False
+        return True
 
     def rotaciona(self):
         self.current_block.rotaciona()

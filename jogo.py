@@ -16,7 +16,7 @@ game= Game()
 
 #criar um evento sempre que a posição do bloco atual mudar
 GAME_TEMP = pygame.USEREVENT 
-pygame.time.set_timer(GAME_TEMP, 300)
+pygame.time.set_timer(GAME_TEMP, 200)
 
 #loop principal do jogo
 while True:
