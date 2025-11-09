@@ -29,6 +29,24 @@ class Grid:
         if self.grid[linha][coluna] == 0:
             return True
         return False
+    
+
+    def linhas_completas (self,linha):
+        for coluna in range (self.num_colunas):
+            if self.grid[linha][coluna] == 0:
+                return False
+        return True
+    
+    def limpa_linha (self, linha):
+        for coluna in range (self.num_colunas):
+            self.grid[linha][coluna] = 0
+
+    def desce_linhas (self,linha, num_linhas):
+        for coluna in range (self.num_colunas):
+            #Move a linha para baixo
+            self.grid[linha + num_linhas][coluna] = self.grid[linha][coluna]
+            #Limpa a linha que foi movida
+            self.grid[linha][coluna] = 0
 
     #função para desenhar o grid 
     def draw(self, tela):
