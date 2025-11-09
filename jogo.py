@@ -26,6 +26,9 @@ while True:
             pygame.quit()
             sys.exit()
         if eventos.type == pygame.KEYDOWN:
+            if game.game_over == True:
+                game.game_over = False
+                game.reset()
             if eventos.key == pygame.K_LEFT and game.game_over == False:
                 game.move_esquerda()
             if eventos.key == pygame.K_RIGHT and game.game_over == False:
