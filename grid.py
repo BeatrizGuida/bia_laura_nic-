@@ -20,9 +20,11 @@ class Grid:
             print()
     
     def dentro (self, linha, coluna):
-        if linha >= 0 and linha < self.num_linhas and coluna >= 0 and coluna < self.num_colunas:
-            return True
-        return False
+        # if linha >= 0 and linha < self.num_linhas and coluna >= 0 and coluna < self.num_colunas:
+        #     return True
+        # return False
+        return 0 <= linha < self.num_linhas and 0 <= coluna < self.num_colunas
+
     
     #verifica se a celula está vazia
     def vazia (self, linha, coluna):
@@ -42,11 +44,19 @@ class Grid:
             self.grid[linha][coluna] = 0
 
     def desce_linhas (self,linha, num_linhas):
-        for coluna in range (self.num_colunas):
-            #Move a linha para baixo
-            self.grid[linha + num_linhas][coluna] = self.grid[linha][coluna]
-            #Limpa a linha que foi movida
-            self.grid[linha][coluna] = 0
+        # for coluna in range (self.num_colunas):
+        #     #Move a linha para baixo
+        #     self.grid[linha + num_linhas][coluna] = self.grid[linha][coluna]
+        #     #Limpa a linha que foi movida
+        #     self.grid[linha][coluna] = 0
+        destino = linha + num_linhas
+        # segurança: não tentar escrever fora do grid
+        if destino < 0 or destino >= self.num_linhas:
+            return
+        # copia a linha inteira
+        self.grid[destino] = self.grid[linha][:]
+        # limpa a linha original
+        self.grid[linha] = [0 for _ in range(self.num_colunas)]
 
 
     def limpa_linhas_completas (self):
