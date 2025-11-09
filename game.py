@@ -41,14 +41,34 @@ class Game:
     def lock_block(self):
         #atualizar a grid com a posição do bloco travado
         pecas = self.current_block.movimento_celulas()
+        # Antes de escrever, verificar se todas as peças estão dentro do grid.
+        # Se alguma peça estiver fora (por exemplo, linha < 0 ou coluna fora),
+        # é sinal que o bloco não coube -> game over.
+        for peca in pecas:
+            if not self.grid.dentro(peca.linha, peca.coluna):
+                # Se a peça estiver fora para cima (linha < 0) ou fora das colunas,
+                # considerei como fim de jogo ao travar
+                self.game_over = True
+                return
+        #escrever as peças na grid
+
         for peca in pecas:
             self.grid.grid[peca.linha][peca.coluna] = self.current_block.id
         self.current_block= self.next_block
         #pega um novo bloco aleatório
         self.next_block= self.get_random_block()
-        self.grid.limpa_linhas_completas()
-        if self.verifica_bloco() == False:
+
+        # Limpa linhas completas
+        linhas_removidas = self.grid.limpa_linhas_completas()
+        if linhas_removidas > 0:
+            # (opcional) atualizar score
+            self.score += 100 * linhas_removidas
+
+        # Se o novo bloco já está colidindo com algo (spawn bloqueado), game over
+        if not self.verifica_bloco():
             self.game_over = True
+
+
 
     def verifica_bloco(self):
         pecas= self.current_block.movimento_celulas()
