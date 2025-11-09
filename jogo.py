@@ -6,7 +6,7 @@ pygame.init()
 preto= (0, 0, 0)
 
 #tamanho da tela
-tela= pygame.display.set_mode((300, 600))
+tela= pygame.display.set_mode((500, 620))
 #nome do jogo
 pygame.display.set_caption('Trix!')
 # relogio para controlar a velocidade do jogo
@@ -15,8 +15,8 @@ relogio = pygame.time.Clock()
 game= Game()
 
 #criar um evento sempre que a posição do bloco atual mudar
-GAME_TEMP = pygame.USEREVENT + 1
-pygame.time.set_timer(GAME_TEMP, 200)
+GAME_UPDATE = pygame.USEREVENT 
+pygame.time.set_timer(GAME_UPDATE, 200)
 
 #loop principal do jogo
 while True:
