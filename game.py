@@ -43,6 +43,8 @@ class Game:
         #pega um novo bloco aleatório
         self.next_block= self.get_random_block()
         self.grid.limpa_linhas_completas()
+        if self.verifica_bloco() == False:
+            self.game_over = True
 
     def verifica_bloco(self):
         pecas= self.current_block.movimento_celulas()

@@ -26,15 +26,15 @@ while True:
             pygame.quit()
             sys.exit()
         if eventos.type == pygame.KEYDOWN:
-            if eventos.key == pygame.K_LEFT:
+            if eventos.key == pygame.K_LEFT and game.game_over == False:
                 game.move_esquerda()
-            if eventos.key == pygame.K_RIGHT:
+            if eventos.key == pygame.K_RIGHT and game.game_over == False:
                 game.move_direita()
-            if eventos.key == pygame.K_DOWN:
+            if eventos.key == pygame.K_DOWN and game.game_over == False:
                 game.move_baixo()
-            if eventos.key == pygame.K_UP:
+            if eventos.key == pygame.K_UP and game.game_over == False:
                 game.rotaciona()
-        if eventos.type == GAME_TEMP:
+        if eventos.type == GAME_TEMP and game.game_over == False: #se o jogo não acabou, move o bloco para baixo
             game.move_baixo()
 
 
