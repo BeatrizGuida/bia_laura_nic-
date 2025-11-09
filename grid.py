@@ -23,6 +23,12 @@ class Grid:
         if linha >= 0 and linha < self.num_linhas and coluna >= 0 and coluna < self.num_colunas:
             return True
         return False
+    
+    #verifica se a celula está vazia
+    def vazia (self, linha, coluna):
+        if self.grid[linha][coluna] == 0:
+            return True
+        return False
 
     #função para desenhar o grid 
     def draw(self, tela):
@@ -35,3 +41,4 @@ class Grid:
                 self.tamanho_celula -1, self.tamanho_celula -1)
                 pygame.draw.rect(tela, self.colors[valor_celula], celula_rect)
    
+
