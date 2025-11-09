@@ -32,6 +32,16 @@ class Game:
         self.current_block.movimento(1, 0)
         if self.bloqueia_movimento() == False:
             self.current_block.movimento(-1, 0)
+            self.lock_block()
+
+    def lock_block(self):
+        #atualizar a grid com a posição do bloco travado
+        pecas = self.current_block.movimento_celulas()
+        for peca in pecas:
+            self.grid.grid[peca.linha][peca.coluna] = self.current_block.id
+        self.current_block= self.next_block
+        #pega um novo bloco aleatório
+        self.next_block= self.get_random_block()
 
     def rotaciona(self):
         self.current_block.rotaciona()
