@@ -42,6 +42,7 @@ class Game:
         self.current_block= self.next_block
         #pega um novo bloco aleatório
         self.next_block= self.get_random_block()
+        self.grid.limpa_linhas_completas()
 
     def verifica_bloco(self):
         pecas= self.current_block.movimento_celulas()
