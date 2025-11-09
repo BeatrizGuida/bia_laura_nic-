@@ -15,7 +15,7 @@ relogio = pygame.time.Clock()
 game= Game()
 
 #criar um evento sempre que a posição do bloco atual mudar
-GAME_TEMP = pygame.USEREVENT 
+GAME_TEMP = pygame.USEREVENT + 1
 pygame.time.set_timer(GAME_TEMP, 200)
 
 #loop principal do jogo

@@ -51,7 +51,7 @@ class Grid:
 
     def limpa_linhas_completas (self):
         linhas_completas= 0
-        for linha in range (self.num_linhas -1, 0, -1):
+        for linha in range (self.num_linhas -1, -1, -1):
             #verifica se a linha está completa
             if self.linhas_completas(linha):
                 self.limpa_linha(linha)
