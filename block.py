@@ -23,8 +23,8 @@ class Block:
         moved_posi= []
         for posicoes in tiles:
             #posição nova da celula (atualizadas)
-            posicoes = Position (posicoes.linha + self.linha, posicoes.coluna + self.coluna)
-            moved_posi.append(posicoes)
+            posicao = Position (posicoes.linha + self.linha, posicoes.coluna + self.coluna)
+            moved_posi.append(posicao)
         return moved_posi
     
 
@@ -35,7 +35,7 @@ class Block:
 
     def desfaz_rotacao (self):
         self.rotation_state-= 1
-        if self.rotation_state == 0:
+        if self.rotation_state < 0:
             self.rotation_state= len(self.cells) - 1
     
 
