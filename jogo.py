@@ -14,6 +14,10 @@ relogio = pygame.time.Clock()
 
 game= Game()
 
+#criar um evento sempre que a posição do bloco atual mudar
+GAME_TEMP = pygame.USEREVENT 
+pygame.time.set_timer(GAME_TEMP, 300)
+
 #loop principal do jogo
 while True:
     #verifica os eventos
@@ -30,12 +34,14 @@ while True:
                 game.move_baixo()
             if eventos.key == pygame.K_UP:
                 game.rotaciona()
+        if eventos.type == GAME_TEMP:
+            game.move_baixo()
 
 
     #pega todas as alterações feitas e desenha uma imagem nova
     tela.fill(preto)
     game.draw(tela)
-    game.move_baixo()
+
 
     pygame.display.update()
     relogio.tick(60)
