@@ -69,6 +69,8 @@ class Game:
             self.game_over = True
 
 
+    def reset(self):
+        self.grid.reset()
 
     def verifica_bloco(self):
         pecas= self.current_block.movimento_celulas()

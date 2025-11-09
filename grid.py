@@ -69,6 +69,13 @@ class Grid:
             elif linhas_completas > 0:
                 self.desce_linhas(linha, linhas_completas)
         return linhas_completas
+    
+    def reset(self):
+        #redefinir valor das celulas para 0
+        for linha in range(self.num_linhas):
+            for coluna in range(self.num_colunas):
+                self.grid[linha][coluna] = 0
+                #grade reiniciada
 
     #função para desenhar o grid 
     def draw(self, tela):
