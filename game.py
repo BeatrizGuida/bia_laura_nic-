@@ -27,6 +27,7 @@ class Game:
 			self.score += 300
 		elif linhas_limpas == 3:
 			self.score += 500
+		self.score += pontos_baixo
 
 
     def get_random_block(self):
