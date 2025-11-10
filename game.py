@@ -14,20 +14,20 @@ class Game:
         self.score = 0
         self.level = 1
         # musica:
-        self.rotate_sound = pygame.mixer.Sound("Sounds_rotate.ogg")
-		self.clear_sound = pygame.mixer.Sound("Sounds_clear.ogg")
+        self.rotate_sound = pygame.mixer.Sound("Sounds/rotate.ogg")
+        self.clear_sound = pygame.mixer.Sound("Sounds/clear.ogg")
 
-		pygame.mixer.music.load("Sounds_music.ogg")
-		pygame.mixer.music.play(-1)
+        pygame.mixer.music.load("Sounds/music.ogg")
+        pygame.mixer.music.play(-1)
 
     def update_score(self, linhas_limpas, pontos_baixo):
         if linhas_limpas == 1:
-			self.score += 100
-		elif linhas_limpas == 2:
-			self.score += 300
-		elif linhas_limpas == 3:
-			self.score += 500
-		self.score += pontos_baixo
+            self.score += 100
+        elif linhas_limpas == 2:
+            self.score += 300
+        elif linhas_limpas == 3:
+            self.score += 500
+        self.score += pontos_baixo
 
 
     def get_random_block(self):
