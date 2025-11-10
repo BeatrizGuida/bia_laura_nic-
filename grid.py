@@ -84,7 +84,7 @@ class Grid:
             for coluna in range(self.num_colunas):
                 valor_celula= self.grid[linha][coluna] 
                 #soma um pixel para que a linha seja visivel no grid e subtrai (para que fique 29 pixels)
-                celula_rect= pygame.Rect(coluna*self.tamanho_celula +1, linha*self.tamanho_celula +1,
+                celula_rect= pygame.Rect(coluna*self.tamanho_celula + 1, linha*self.tamanho_celula + 1,
                 self.tamanho_celula -1, self.tamanho_celula -1)
                 pygame.draw.rect(tela, self.colors[valor_celula], celula_rect)
    

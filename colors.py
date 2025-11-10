@@ -8,6 +8,9 @@ class Colors:
     roxo_neon    = (191, 0, 255)       
     ciano_neon   = (0, 255, 255)      
     azul_neon    = (0, 100, 255)  
+    branco= (255, 255, 255)
+    preto= (0, 0, 0)
+    azul_claro= (59, 85, 162)
 
     @classmethod
     def cores_celulas(cls):

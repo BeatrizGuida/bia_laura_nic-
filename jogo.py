@@ -1,9 +1,14 @@
 import pygame, sys
 from game import Game
+from colors import Colors
 
 #inicializa o pygame
 pygame.init()
-preto= (0, 0, 0)
+
+fonte_titulo= pygame.font.Font(None, 40)
+pontuacao= fonte_titulo.render("Pontuação", True, Colors.branco)
+
+pontuacao_rect= pygame.Rect(315, 55, 170, 60) 
 
 #tamanho da tela
 tela= pygame.display.set_mode((500, 620))
@@ -15,8 +20,8 @@ relogio = pygame.time.Clock()
 game= Game()
 
 #criar um evento sempre que a posição do bloco atual mudar
-GAME_UPDATE = pygame.USEREVENT 
-pygame.time.set_timer(GAME_UPDATE, 200)
+GAME_TEMP = pygame.USEREVENT
+pygame.time.set_timer(GAME_TEMP, 200)
 
 #loop principal do jogo
 while True:
@@ -42,8 +47,11 @@ while True:
 
 
     #pega todas as alterações feitas e desenha uma imagem nova
-    tela.fill(preto)
+    tela.fill(Colors.roxo_neon)
+    tela.blit(pontuacao, (332, 20, 50, 50))
+    pygame.draw.rect(tela, Colors.azul_claro, pontuacao_rect, 0, 10, )
     game.draw(tela)
+
 
 
     pygame.display.update()
