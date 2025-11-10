@@ -1,6 +1,7 @@
 from grid import Grid
 from blocks import *
 import random
+import pygame
 
 class Game:
     def __init__(self):
@@ -12,6 +13,9 @@ class Game:
         # (opcional) score/level
         self.score = 0
         self.level = 1
+        # musica:
+        self.rotate_sound = pygame.mixer.Sound("Sounds/rotate.ogg")
+		
 
     def get_random_block(self):
         if len(self.blocks) == 0:
