@@ -20,6 +20,9 @@ class Game:
 		pygame.mixer.music.load("Sounds/music.ogg")
 		pygame.mixer.music.play(-1)
 
+    def update_score(self, linhas_limpas, pontos_baixo):
+
+
     def get_random_block(self):
         if len(self.blocks) == 0:
             self.blocks= [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
