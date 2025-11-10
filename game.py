@@ -15,7 +15,10 @@ class Game:
         self.level = 1
         # musica:
         self.rotate_sound = pygame.mixer.Sound("Sounds/rotate.ogg")
-		
+		self.clear_sound = pygame.mixer.Sound("Sounds/clear.ogg")
+
+		pygame.mixer.music.load("Sounds/music.ogg")
+		pygame.mixer.music.play(-1)
 
     def get_random_block(self):
         if len(self.blocks) == 0:
