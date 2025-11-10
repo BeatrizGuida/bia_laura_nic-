@@ -145,8 +145,7 @@ def tela_game_over(surface, pontuacao=None):
 # Tela principal do jogo
 def tela_jogo(surface):
     surface.fill(Colors.roxo_escuro)
-
-    surface.blit(texto_pontuacao, (332, 20))
+    surface.blit(texto_pontuacao, (332, 15))
     pygame.draw.rect(surface, Colors.azul_claro, retangulo_pontuacao, border_radius=10)
 
     texto_score = fonte_titulo.render(str(getattr(jogo, "score", 0)), True, Colors.branco)
