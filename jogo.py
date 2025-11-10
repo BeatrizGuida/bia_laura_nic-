@@ -77,7 +77,7 @@ def tela_inicial(surface):
     titulo = fonte_titulo.render("TRIX", True, Colors.branco)
     surface.blit(titulo, titulo.get_rect(center=(500 // 2, 160)))
 
-    instrucoes = fonte_info.render("Use seta para a esquerda, seta para a direita e seta para baixo para mover, seta para cima para girar a peça", True, Colors.branco)
+    instrucoes = fonte_info.render("Use seta para a esquerda, para a direita e para baixo para mover e para cima para girar a peça", True, Colors.branco)
     surface.blit(instrucoes, instrucoes.get_rect(center=(500 // 2, 205)))
 
     botao_iniciar.center = (500 // 2, 300)
