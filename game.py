@@ -21,7 +21,7 @@ class Game:
 		pygame.mixer.music.play(-1)
 
     def update_score(self, linhas_limpas, pontos_baixo):
-
+        if linhas_limpas == 1:
 
     def get_random_block(self):
         if len(self.blocks) == 0:
