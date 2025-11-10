@@ -23,7 +23,7 @@ jogo = Game()
 
 # evento de queda automática
 EVENTO_QUEDA = pygame.USEREVENT
-pygame.time.set_timer(EVENTO_QUEDA, 200)
+pygame.time.set_timer(EVENTO_QUEDA, 200)  # a cada 200 ms
 
 # Estados possíveis
 estado = "menu"  # menu, informacoes, jogando, game_over
@@ -33,30 +33,36 @@ botao_iniciar = pygame.Rect(0, 0, 180, 54)
 botao_reiniciar = pygame.Rect(0, 0, 180, 54)
 botao_seta = pygame.Rect(0, 0, 80, 50)
 
-# fontes
+# fontes auxiliares
 fonte_subtitulo = pygame.font.SysFont(None, 28)
 fonte_botao = pygame.font.SysFont(None, 25, True)
-fonte_info = pygame.font.Font(None, 22)
+fonte_info = pygame.font.Font(None, 20)
 fonte_titulo = pygame.font.SysFont("verdana", 60, True)
 
 # área do próximo bloco
-retangulo_proximo = pygame.Rect(315, 140, 170, 120)
+retangulo_proximo = pygame.Rect(315, 185, 170, 190)
 
-# Função para desenhar o próximo bloco
+# Função para desenhar o próximo bloco (miniatura)
 def desenhar_proximo_bloco(surface, bloco, rect):
     if bloco is None:
         return
+
     cores = Colors.cores_celulas()
-    tamanho_celula = 18
+    tamanho_celula = 18  # tamanho menor para preview
+
     pecas = bloco.cells.get(bloco.rotation_state, list(bloco.cells.values())[0])
+
     colunas = [p.coluna for p in pecas]
     linhas = [p.linha for p in pecas]
     min_c, max_c = min(colunas), max(colunas)
     min_l, max_l = min(linhas), max(linhas)
+
     largura_px = (max_c - min_c + 1) * tamanho_celula
     altura_px = (max_l - min_l + 1) * tamanho_celula
+
     inicio_x = rect.x + (rect.width - largura_px) // 2
     inicio_y = rect.y + (rect.height - altura_px) // 2
+
     for p in pecas:
         rx = inicio_x + (p.coluna - min_c) * tamanho_celula
         ry = inicio_y + (p.linha - min_l) * tamanho_celula
@@ -64,19 +70,23 @@ def desenhar_proximo_bloco(surface, bloco, rect):
         cor = cores[bloco.id] if 0 <= bloco.id < len(cores) else Colors.cinza_escuro
         pygame.draw.rect(surface, cor, r)
 
+
 # Tela inicial
 fundo_inicial = pygame.image.load("Imagem_tela_inicial.png").convert()
 fundo_inicial = pygame.transform.scale(fundo_inicial, (500, 620))
 def tela_inicial(surface):
     surface.blit(fundo_inicial, (0, 0))
     titulo = fonte_titulo.render("TRIX", True, Colors.branco)
-    surface.blit(titulo, titulo.get_rect(center=(250, 160)))
-    botao_iniciar.center = (250, 300)
+    surface.blit(titulo, titulo.get_rect(center=(500 // 2, 160)))
+
+    botao_iniciar.center = (500 // 2, 300)
     pygame.draw.rect(surface, Colors.verde_neon, botao_iniciar, border_radius=10)
     texto_botao = fonte_botao.render("INICIAR", True, Colors.preto)
     surface.blit(texto_botao, texto_botao.get_rect(center=botao_iniciar.center))
+
     dica = fonte_info.render("Clique em INICIAR", True, Colors.branco)
-    surface.blit(dica, dica.get_rect(center=(250, 260)))
+    surface.blit(dica, dica.get_rect(center=(500 // 2, 260)))
+
 
 #Tela de informações
 def tela_informacoes(surface):
@@ -111,90 +121,107 @@ def tela_informacoes(surface):
     texto_dica = fonte_info.render("Pressione ENTER ou clique na seta", True, Colors.branco)
     surface.blit(texto_dica, texto_dica.get_rect(center=(250, 580)))
 
+
 # Tela de Game Over
 def tela_game_over(surface, pontuacao=None):
     surface.blit(fundo_inicial, (0, 0))
+
     titulo = fonte_titulo.render("FIM DE JOGO", True, Colors.vermelho_neon)
-    surface.blit(titulo, titulo.get_rect(center=(250, 160)))
+    surface.blit(titulo, titulo.get_rect(center=(500 // 2, 140)))
+
     if pontuacao is not None:
         pontuacao_texto = fonte_subtitulo.render(f"Pontuação: {pontuacao}", True, Colors.branco)
-        surface.blit(pontuacao_texto, pontuacao_texto.get_rect(center=(250, 210)))
-    botao_reiniciar.center = (250, 300)
+        surface.blit(pontuacao_texto, pontuacao_texto.get_rect(center=(500 // 2, 210)))
+
+    botao_reiniciar.center = (500 // 2, 300)
     pygame.draw.rect(surface, Colors.verde_neon, botao_reiniciar, border_radius=10)
     texto_botao = fonte_botao.render("REINICIAR", True, Colors.preto)
     surface.blit(texto_botao, texto_botao.get_rect(center=botao_reiniciar.center))
+
     dica = fonte_info.render("Clique em REINICIAR", True, Colors.branco)
-    surface.blit(dica, dica.get_rect(center=(250, 260)))
+    surface.blit(dica, dica.get_rect(center=(500 // 2, 260)))
+
 
 # Tela principal do jogo
 def tela_jogo(surface):
     surface.fill(Colors.roxo_escuro)
-    surface.blit(texto_pontuacao, (332, 20))
+    surface.blit(texto_pontuacao, (332, 15))
     pygame.draw.rect(surface, Colors.azul_claro, retangulo_pontuacao, border_radius=10)
+
     texto_score = fonte_titulo.render(str(getattr(jogo, "score", 0)), True, Colors.branco)
     surface.blit(texto_score, texto_score.get_rect(center=retangulo_pontuacao.center))
+
     jogo.draw(surface)
+
     pygame.draw.rect(surface, Colors.azul_claro, retangulo_proximo, border_radius=10)
     texto_proximo = fonte_info.render("PRÓXIMO BLOCO", True, Colors.branco)
     surface.blit(texto_proximo, (retangulo_proximo.x + 8, retangulo_proximo.y - 20))
     desenhar_proximo_bloco(surface, jogo.next_block, retangulo_proximo)
 
-#LOOP PRINCIPAL
+
+# loop principal
 while True:
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
-        # clique do mouse
+        # cliques do mouse
         if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
             pos = evento.pos
-            if estado == "menu" and botao_iniciar.collidepoint(pos):
-                estado = "informacoes"
-            elif estado == "informacoes" and botao_seta.collidepoint(pos):
-                jogo.reset()
-                jogo.game_over = False
-                jogo.score = 0
-                estado = "jogando"
-            elif estado == "game_over" and botao_reiniciar.collidepoint(pos):
-                jogo.reset()
-                jogo.game_over = False
-                jogo.score = 0
-                estado = "jogando"
+            if estado == "menu":
+                if botao_iniciar.collidepoint(pos):
+                    estado = "informacoes"  
+            elif estado == "informacoes":
+                if botao_seta.collidepoint(pos):
+                    jogo.reset()
+                    jogo.game_over = False
+                    jogo.score = 0
+                    estado = "jogando"
+            elif estado == "game_over":
+                if botao_reiniciar.collidepoint(pos):
+                    jogo.reset()
+                    jogo.game_over = False
+                    jogo.score = 0
+                    estado = "jogando"
 
         # teclado
         if evento.type == pygame.KEYDOWN:
-            if estado == "menu" and evento.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
-                estado = "informacoes"
-            elif estado == "informacoes" and evento.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
-                jogo.reset()
-                jogo.game_over = False
-                jogo.score = 0
-                estado = "jogando"
-            elif estado == "jogando" and not jogo.game_over:
-                if evento.key == pygame.K_LEFT:
-                    jogo.move_esquerda()
-                if evento.key == pygame.K_RIGHT:
-                    jogo.move_direita()
-                if evento.key == pygame.K_DOWN:
-                    jogo.move_baixo()
-                if evento.key == pygame.K_UP:
-                    jogo.rotaciona()
-            elif estado == "game_over" and evento.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
-                jogo.reset()
-                jogo.game_over = False
-                jogo.score = 0
-                estado = "jogando"
+            if estado == "menu":
+                if evento.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
+                    estado = "informacoes"
+            elif estado == "informacoes":
+                if evento.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
+                    jogo.reset()
+                    jogo.game_over = False
+                    jogo.score = 0
+                    estado = "jogando"
+            elif estado == "jogando":
+                if not jogo.game_over:
+                    if evento.key == pygame.K_LEFT:
+                        jogo.move_esquerda()
+                    if evento.key == pygame.K_RIGHT:
+                        jogo.move_direita()
+                    if evento.key == pygame.K_DOWN:
+                        jogo.move_baixo()
+                    if evento.key == pygame.K_UP:
+                        jogo.rotaciona()
+            elif estado == "game_over":
+                if evento.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
+                    jogo.reset()
+                    jogo.game_over = False
+                    jogo.score = 0
+                    estado = "jogando"
 
         # evento de queda automática
         if evento.type == EVENTO_QUEDA and estado == "jogando" and not jogo.game_over:
             jogo.move_baixo()
 
-    # desenha conforme o estado
+    # desenho de acordo com o estado
     if estado == "menu":
         tela_inicial(tela)
     elif estado == "informacoes":
-        tela_informacoes(tela)
+        tela_informacoes(tela)  
     elif estado == "jogando":
         tela_jogo(tela)
         if jogo.game_over:
