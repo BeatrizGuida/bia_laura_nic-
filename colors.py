@@ -6,6 +6,7 @@ class Colors:
     laranja_neon = (255, 140, 0)      
     amarelo_neon = (255, 255, 0)       
     roxo_neon    = (191, 0, 255)       
+    roxo_escuro= (102, 0, 153)
     ciano_neon   = (0, 255, 255)      
     azul_neon    = (0, 100, 255)  
     branco= (255, 255, 255)

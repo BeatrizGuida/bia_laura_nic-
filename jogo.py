@@ -6,8 +6,8 @@ from colors import Colors
 pygame.init()
 
 # fontes e UI
-fonte_titulo = pygame.font.Font(None, 40)
-texto_pontuacao = fonte_titulo.render("Pontuação", True, Colors.branco)
+fonte_pontuacao = pygame.font.Font(None, 35)
+texto_pontuacao = fonte_pontuacao.render("Pontuação", True, Colors.branco)
 
 retangulo_pontuacao = pygame.Rect(315, 55, 170, 60)
 
@@ -33,9 +33,11 @@ botao_iniciar = pygame.Rect(0, 0, 180, 54)
 botao_reiniciar = pygame.Rect(0, 0, 180, 54)
 
 # fontes auxiliares
-fonte_subtitulo = pygame.font.Font(None, 28)
-fonte_botao = pygame.font.Font(None, 30)
+fonte_subtitulo = pygame.font.SysFont(None, 28)
+fonte_botao = pygame.font.SysFont(None, 25, True)
 fonte_info = pygame.font.Font(None, 20)
+fonte_titulo = pygame.font.SysFont("verdana", 70, True)
+
 
 # área do próximo bloco
 retangulo_proximo = pygame.Rect(315, 140, 170, 120)
@@ -71,13 +73,21 @@ def desenhar_proximo_bloco(surface, bloco, rect):
 
 
 # Tela inicial
+fundo_inicial = pygame.image.load("Imagem_tela_inicial.png").convert()
+fundo_inicial = pygame.transform.scale(fundo_inicial, (500, 620))
 def tela_inicial(surface):
-    surface.fill(Colors.roxo_neon)
+    # Desenha o fundo
+    surface.blit(fundo_inicial, (0, 0))
 
+    # (agora vem o restante da interface)
     titulo = fonte_titulo.render("TRIX", True, Colors.branco)
     surface.blit(titulo, titulo.get_rect(center=(500 // 2, 160)))
 
-    instrucoes = fonte_info.render("Use seta para a esquerda, para a direita e para baixo para mover e para cima para girar a peça", True, Colors.branco)
+    instrucoes = fonte_info.render(
+        "Use seta para a esquerda, para a direita e para baixo para mover e para cima para girar a peça",
+        True,
+        Colors.branco
+    )
     surface.blit(instrucoes, instrucoes.get_rect(center=(500 // 2, 205)))
 
     botao_iniciar.center = (500 // 2, 300)
@@ -86,7 +96,42 @@ def tela_inicial(surface):
     surface.blit(texto_botao, texto_botao.get_rect(center=botao_iniciar.center))
 
     dica = fonte_info.render("Clique em INICIAR", True, Colors.branco)
-    surface.blit(dica, dica.get_rect(center=(500 // 2, 360)))
+    surface.blit(dica, dica.get_rect(center=(500 // 2, 260)))
+    
+
+# Tela de informações
+fundo_info = pygame.image.load("Imagem_tela_info.png").convert()
+fundo_info = pygame.transform.scale(fundo_info, (500, 620))
+
+def tela_info(surface):
+    # Desenha o fundo
+    surface.blit(fundo_info, (0, 0))
+
+    # Título
+    titulo = fonte_titulo.render("INFORMAÇÕES", True, Colors.branco)
+    surface.blit(titulo, titulo.get_rect(center=(500 // 2, 100)))
+
+    # Textos explicativos
+    linhas = [
+        "Bem-vindo ao TRIX!",
+        "Seu objetivo é mover e girar as peças para completar linhas.",
+        "Cada linha completa vale pontos e desaparece do tabuleiro.",
+        "O jogo acaba quando as peças alcançam o topo.",
+        "",
+        "Controles:",
+        "← → : mover a peça para os lados",
+        "↓ : acelerar a queda",
+        "↑ : girar a peça",
+        "",
+        "Boa sorte e divirta-se!"
+    ]
+
+    # Desenha as linhas na tela
+    y = 180
+    for linha in linhas:
+        texto = fonte_info.render(linha, True, Colors.branco)
+        surface.blit(texto, texto.get_rect(center=(500 // 2, y)))
+        y += 30  # espaçamento entre linhas
 
 
 # Tela de Game Over
@@ -111,7 +156,7 @@ def tela_game_over(surface, pontuacao=None):
 
 # Tela principal do jogo
 def tela_jogo(surface):
-    surface.fill(Colors.roxo_neon)
+    surface.fill(Colors.roxo_escuro)
 
     surface.blit(texto_pontuacao, (332, 20))
     pygame.draw.rect(surface, Colors.azul_claro, retangulo_pontuacao, border_radius=10)
