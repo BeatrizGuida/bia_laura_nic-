@@ -83,12 +83,6 @@ def tela_inicial(surface):
     titulo = fonte_titulo.render("TRIX", True, Colors.branco)
     surface.blit(titulo, titulo.get_rect(center=(500 // 2, 160)))
 
-    instrucoes = fonte_info.render(
-        "Use seta para a esquerda, para a direita e para baixo para mover e para cima para girar a peça",
-        True,
-        Colors.branco
-    )
-    surface.blit(instrucoes, instrucoes.get_rect(center=(500 // 2, 205)))
 
     botao_iniciar.center = (500 // 2, 300)
     pygame.draw.rect(surface, Colors.verde_neon, botao_iniciar, border_radius=10)
@@ -99,39 +93,39 @@ def tela_inicial(surface):
     surface.blit(dica, dica.get_rect(center=(500 // 2, 260)))
     
 
-# Tela de informações
-fundo_info = pygame.image.load("Imagem_tela_info.png").convert()
-fundo_info = pygame.transform.scale(fundo_info, (500, 620))
+# # Tela de informações
+# fundo_info = pygame.image.load("Imagem_tela_info.png").convert()
+# fundo_info = pygame.transform.scale(fundo_info, (500, 620))
 
-def tela_info(surface):
-    # Desenha o fundo
-    surface.blit(fundo_info, (0, 0))
+# def tela_info(surface):
+#     # Desenha o fundo
+#     surface.blit(fundo_info, (0, 0))
 
-    # Título
-    titulo = fonte_titulo.render("INFORMAÇÕES", True, Colors.branco)
-    surface.blit(titulo, titulo.get_rect(center=(500 // 2, 100)))
+#     # Título
+#     titulo = fonte_titulo.render("INFORMAÇÕES", True, Colors.branco)
+#     surface.blit(titulo, titulo.get_rect(center=(500 // 2, 100)))
 
-    # Textos explicativos
-    linhas = [
-        "Bem-vindo ao TRIX!",
-        "Seu objetivo é mover e girar as peças para completar linhas.",
-        "Cada linha completa vale pontos e desaparece do tabuleiro.",
-        "O jogo acaba quando as peças alcançam o topo.",
-        "",
-        "Controles:",
-        "← → : mover a peça para os lados",
-        "↓ : acelerar a queda",
-        "↑ : girar a peça",
-        "",
-        "Boa sorte e divirta-se!"
-    ]
+#     # Textos explicativos
+#     linhas = [
+#         "Bem-vindo ao TRIX!",
+#         "Seu objetivo é mover e girar as peças para completar linhas.",
+#         "Cada linha completa vale pontos e desaparece do tabuleiro.",
+#         "O jogo acaba quando as peças alcançam o topo.",
+#         "",
+#         "Controles:",
+#         "← → : mover a peça para os lados",
+#         "↓ : acelerar a queda",
+#         "↑ : girar a peça",
+#         "",
+#         "Boa sorte e divirta-se!"
+#     ]
 
-    # Desenha as linhas na tela
-    y = 180
-    for linha in linhas:
-        texto = fonte_info.render(linha, True, Colors.branco)
-        surface.blit(texto, texto.get_rect(center=(500 // 2, y)))
-        y += 30  # espaçamento entre linhas
+#     # Desenha as linhas na tela
+#     y = 180
+#     for linha in linhas:
+#         texto = fonte_info.render(linha, True, Colors.branco)
+#         surface.blit(texto, texto.get_rect(center=(500 // 2, y)))
+#         y += 30  # espaçamento entre linhas
 
 
 # Tela de Game Over
