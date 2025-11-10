@@ -23,6 +23,7 @@ class Game:
     def update_score(self, linhas_limpas, pontos_baixo):
         if linhas_limpas == 1:
 			self.score += 100
+		elif linhas_limpas == 2:
 
     def get_random_block(self):
         if len(self.blocks) == 0:
