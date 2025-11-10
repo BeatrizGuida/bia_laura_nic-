@@ -14,8 +14,8 @@ class Game:
         self.score = 0
         self.level = 1
         # musica:
-        self.rotate_sound = pygame.mixer.Sound("Sounds/rotate.ogg")
-		self.clear_sound = pygame.mixer.Sound("Sounds/clear.ogg")
+        self.rotate_sound = pygame.mixer.Sound("Sounds_rotate.ogg")
+		self.clear_sound = pygame.mixer.Sound("Sounds_clear.ogg")
 
 		pygame.mixer.music.load("Sounds/music.ogg")
 		pygame.mixer.music.play(-1)
