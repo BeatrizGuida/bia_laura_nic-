@@ -63,7 +63,7 @@ Tela de Game Over – exibe a pontuação final e botão “Reiniciar”
 📺 Demonstração em Vídeo
 
 🎥 Assista ao vídeo de demonstração do TRIX:
-👉(LINK )
+👉([LINK](https://www.youtube.com/shorts/rEcPkIe_jvc) )
  
 
 ## ✨ Créditos
